@@ -6,7 +6,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * This was my "naive" solution according to https://www.educative.io/courses/java-multithreading-for-senior-engineering-interviews/qVl160R3xjk
- *  @see com.ulises.multithreading.TokenBucketSync
+ *  @see TokenBucketMonitor
  */
 public class MyNaiveTokenBucket<T> {
 

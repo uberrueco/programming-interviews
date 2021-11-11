@@ -3,7 +3,7 @@ package com.ulises.multithreading;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class ProducerConsumerSync<E> {
+public class ProducerConsumerMonitor<E> {
 
     private static final int MAX_SIZE = 15;
     Object notEmpty = new Object();

@@ -4,13 +4,13 @@ import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
-public class TokenBucketSync {
+public class TokenBucketMonitor {
 
     private int MAX_TOKENS;
     private long lastRequestTime = System.currentTimeMillis();
     long possibleTokens = 0;
 
-    public TokenBucketSync(int max) {
+    public TokenBucketMonitor(int max) {
         this.MAX_TOKENS = max;
     }
 
@@ -32,7 +32,7 @@ public class TokenBucketSync {
     }
 
     public static void main(String[] args) {
-        TokenBucketSync bucket = new TokenBucketSync(10);
+        TokenBucketMonitor bucket = new TokenBucketMonitor(10);
         ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
         for (int i = 1; i <= 20; i++) {
             executor.submit(new Task(bucket));
@@ -41,9 +41,9 @@ public class TokenBucketSync {
 
     public static class Task<T> implements Runnable {
 
-        private TokenBucketSync bucket;
+        private TokenBucketMonitor bucket;
 
-        public Task(TokenBucketSync bucket) {
+        public Task(TokenBucketMonitor bucket) {
             this.bucket = bucket;
         }
 

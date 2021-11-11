@@ -6,7 +6,10 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class ProducerConsumerConditionVar<E> {
+/**
+ * This class has a mutex object of type Lock and condition variables to signal other threads.
+ */
+public class ProducerConsumerMutex<E> {
 
     Lock lock = new ReentrantLock();
     Condition notEmpty = lock.newCondition();
@@ -16,10 +19,10 @@ public class ProducerConsumerConditionVar<E> {
     Queue<E> queue = new LinkedList<>();
 
     public void put(E e) throws InterruptedException {
-        lock.lock();
         try {
+            lock.lock();
             while (queue.size() == MAX_SIZE) {
-                notFull.wait();
+                notFull.await();
             }
             queue.offer(e);
             notFull.signalAll();
