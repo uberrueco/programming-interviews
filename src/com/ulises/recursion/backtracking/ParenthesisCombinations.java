@@ -14,7 +14,7 @@ public class ParenthesisCombinations {
     private void helper(List<String> results, StringBuilder builder, int open, int close, int n) {
 
         if (builder.length() == n * 2) {
-            results.add(new String(builder.toString()));
+            results.add(builder.toString());
             return;
         }
 
@@ -31,6 +31,7 @@ public class ParenthesisCombinations {
     }
 
     public static void main (String[] args) {
-
+        ParenthesisCombinations combinations = new ParenthesisCombinations();
+        System.out.println(combinations.generateParenthesis(3));
     }
 }
